@@ -70,6 +70,8 @@ func Compilecircuit() frontend.CompiledConstraintSystem {
 	if err != nil {
 		fmt.Printf("error : %s\n", err.Error())
 	}
-	fmt.Printf("rics:%v\n", r1cs)
+	constraints := r1cs.GetConstraints()
+	fmt.Printf("r1cs:%v\n", r1cs)
+	fmt.Printf("the constraints are :%v\n", constraints)
 	return r1cs
 }
