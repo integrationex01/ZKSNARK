@@ -7,7 +7,7 @@ import (
 	"github.com/consensys/gnark/backend/groth16"
 	"github.com/consensys/gnark/frontend"
 
-	c "ZKSNARK/PIN/week2/circuit"
+	c "ZKSNARK/PIN/week3/circuit"
 )
 
 func ProofGroth16(ccs frontend.CompiledConstraintSystem) error {
@@ -19,13 +19,8 @@ func ProofGroth16(ccs frontend.CompiledConstraintSystem) error {
 	}
 
 	// witness definition
-	// A witness for an NP statement is a piece of information that allows you to efficiently verify that the statement is true.
-	// like just take some random point at polynomial
-	assignment := c.Circuit{X: 88, Y: 2, Z: 3, OUT: 1}
-	witness, err := frontend.NewWitness(&assignment, ecc.BN254)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
+	assignment := c.Circuit{A: 1, B: 3, C: 4}
+	witness, _ := frontend.NewWitness(&assignment, ecc.BN254)
 	publicWitness, _ := witness.Public()
 
 	// groth16: Prove & Verify

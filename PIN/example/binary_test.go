@@ -1,16 +1,15 @@
-package main
+package example
 
 import (
-	c "ZKSNARK/PIN/week3/circuit"
-	p "ZKSNARK/PIN/week3/proof"
 	"fmt"
+	"testing"
 )
 
-func main() {
-	css := c.Compilecircuit()
+func TestProo(t *testing.T) {
+	css := Compilecircuit()
 	constraints := css.GetConstraints()
 	fmt.Printf("the constraint is %v\n", constraints)
-	err := p.ProofGroth16(css)
+	err := ProofGroth16(css)
 	if err != nil {
 		fmt.Println(err)
 	}
